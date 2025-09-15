@@ -1,0 +1,168 @@
+<html lang="en">
+
+<head>
+    <style>
+        h1,
+        h2 {
+            text-align: center;
+        }
+
+        #formContainer {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+        }
+
+        input,
+        textarea {
+            width: 300px;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #1c051d;
+            border-radius: 4px;
+        }
+
+        button {
+            margin: 15px;
+            padding: 9px 18px;
+            background-color: #695925;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #069173;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #110924;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #af4c4c;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>User Data Management</h2>
+    <div id="formContainer">
+        <label for="nameInput">
+            Name:
+        </label>
+        <input type="text" id="nameInput" placeholder="Enter Name...">
+        <label for="emailInput">
+            Email ID:
+        </label>
+        <input type="email" id="emailInput" placeholder="Enter Email...">
+        <label for="numberInput">
+            Mobile Details:
+        </label>
+        <input type="text" id="numberInput" placeholder="Enter Mobile Details...">
+        <label for="addressInput">
+            Address:
+        </label>
+        <textarea id="addressInput" placeholder="Enter Address..."></textarea>
+        <br>
+        <button onclick="addData()">Add</button>
+    </div>
+                 
+    <table id="outputTable">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile Details</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+    </table>
+
+    <script>
+        function addData() {
+          
+            let name = document.getElementById("nameInput").value;
+            let email = document.getElementById("emailInput").value;
+            let mobile = document.getElementById("numberInput").value;
+            let address = document.getElementById("addressInput").value;
+
+       
+            let table = document.getElementById("outputTable");
+            let newRow = table.insertRow(table.rows.length);
+
+            newRow.insertCell(0).innerHTML = name;
+            newRow.insertCell(1).innerHTML = email;
+            newRow.insertCell(2).innerHTML = mobile;
+            newRow.insertCell(3).innerHTML = address;
+            newRow.insertCell(4).innerHTML =
+                '<button onclick="editData(this)">Edit</button>' +
+                '<button onclick="deleteData(this)">Delete</button>';
+
+
+            clearInputs();
+        }
+
+        function editData(button) {
+
+            let row = button.parentNode.parentNode;
+
+          
+            let nameCell = row.cells[0];
+            let emailCell = row.cells[1];
+            let mobileCell = row.cells[2];
+            let addressCell = row.cells[3];
+
+            
+            let nameInput =
+                prompt("Enter the updated name:",
+                    nameCell.innerHTML);
+            let emailInput =
+                prompt("Enter the updated email:",
+                    emailCell.innerHTML);
+            let numberInput =
+                prompt("Enter the updated mobile details:",
+                    mobileCell.innerHTML
+                );
+            let addressInput =
+                prompt("Enter the updated address:",
+                    addressCell.innerHTML
+                );
+
+            nameCell.innerHTML = nameInput;
+            emailCell.innerHTML = emailInput;
+            mobileCell.innerHTML = numberInput;
+            addressCell.innerHTML = addressInput;
+        }
+
+        function deleteData(button) {
+
+            let row = button.parentNode.parentNode;
+
+            row.parentNode.removeChild(row);
+        }
+		       function clearInputs() {
+
+            document.getElementById("nameInput").value = "";
+            document.getElementById("emailInput").value = "";
+            document.getElementById("numberInput").value = "";
+            document.getElementById("addressInput").value = "";
+        }
+    </script>
+</body>
+
+</html>

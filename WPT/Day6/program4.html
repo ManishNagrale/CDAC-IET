@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback Calclator</title>
+
+    <script>
+
+            function addition(n1, n2, displayCb) {
+      let res = n1 + n2;
+      displayCb(res);
+    }
+
+    function display(result) {
+      document.getElementById('output').innerText = "Result: " + result;
+    }
+
+      function subtraction(n1, n2, displayCb) {
+      let res = n1 - n2;
+      displayCb(res);
+    }
+
+    function Division(n1,n2,displayCb){
+        let res =n1/n2;
+        displayCb(res);
+    }
+         function multiply(n1, n2, displayCb) {
+      let res = n1 * n2;
+      displayCb(res);
+    }
+
+    function calculate(n1, n2, mcallBack) {
+      mcallBack(n1, n2, display);
+    }
+
+  function getResult() {
+    const n1 = Number(document.getElementById('FIRST').value);
+    const n2 = Number(document.getElementById('SECOND').value);
+    const op = document.getElementById('operation').value;
+
+    switch (op) {
+      case "add":
+        calculate(n1, n2, addition);
+        break;
+      case "sub":
+        calculate(n1, n2, subtraction);
+        break;
+      case "mul":
+        calculate(n1, n2, multiply);
+        break;
+      case "div":
+        calculate(n1, n2, Division);
+        break;
+    }
+  }
+</script>
+</head>
+<body>
+    <label for="number">FIRST NUMBER</label>
+    <input type="number" id="FIRST">
+    <br>
+    <br>
+
+    <label for="number">SECOND NUMBER</label>
+    <input type="number" id="SECOND">
+
+    <label>
+    Choose Operation:
+    <select id="operation">
+      <option value="add">Addition</option>
+      <option value="sub">Subtraction</option>
+      <option value="mul">Multiplication</option>
+      <option value="div">Division</option>
+    </select>
+  </label><br>
+  <button onclick="getResult()">Calculate</button>
+  <div id="output"></div>
+    
+</body>
+</html>
