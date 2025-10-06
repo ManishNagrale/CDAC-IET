@@ -1,0 +1,11 @@
+{
+  "name": "day12",
+  "version": "1.0.0",
+  "description": "I want to run priojecty",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main.js"
+  },
+  "author": "nayan",
+  "license": "ISC"
+}
