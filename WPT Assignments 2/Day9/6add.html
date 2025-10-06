@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 6</title>
+
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        .highlight 
+        {
+            background-color:rgb(141, 0, 0);
+            color: rgb(219, 204, 204);
+        }
+        .bold-text
+         {
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+<body>
+    <br>
+
+    <p id="text">HTML,CSS,JS</p>
+
+    <button id="Btn1">Add Highlight</button>
+    <button id="Btn2">Remove Highlight</button>
+    <button id="Btn3">Toggle Bold</button>
+
+    <script>
+        $(document).ready(function() {
+
+             $('#Btn1').click(function() {
+                $('#text').addClass('highlight');
+            });
+
+            $('#Btn2').click(function() {
+                $('#text').removeClass('highlight');
+            });
+
+            $('#Btn3').click(function() {
+                $('#text').toggleClass('bold-text');
+            });
+        });
+    </script>
+</body>
+</html>

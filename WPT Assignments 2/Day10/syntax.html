@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX with jQuery Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <h2>AJAX using jQuery</h2>
+    <button id="loadBtn">Load Content (load())</button>
+    <div id="loadResult">Initial content (will be replaced)</div>
+    <hr>
+
+     <button id="getBtn">Get Content ($.get())</button>
+    <div id="getResult">Waiting for content...</div>
+
+    <script>
+
+        $("#loadBtn").click(function () {
+            $("#loadResult").load("test.txt"); 
+        });
+
+        $("#getBtn").click(function () {
+            $.get("message.txt", function (data) {
+                $("#getResult").html(data);
+            });
+        });
+    </script>
+
+</body>
+</html>

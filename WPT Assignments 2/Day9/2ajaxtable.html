@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo">
+   <table id="demo" border="2">
+   <thead>
+    <tbody>
+        <thead>
+            <tr>
+            <th>Id</th>
+            <th>Title</th>
+            </tr>
+        </thead>
+        <tbody id="tbody1"></tbody>
+    </tbody>
+   </thead>
+</table>
+
+    <button type="button" onclick="loadDoc()">VIEW CONTENT</button>
+   </div> 
+   <script>
+    
+   function loadDoc() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+ const x=JSON.parse(this.responseText);
+
+ const tbody2=document.getElementById("tbody1")
+
+ x.forEach(element => {
+    const NewRow = 
+   `<tr> 
+    <td>${element.id}</td>
+    <td>${element.title}</td>
+    </tr>`
+
+    tbody2.innerHTML += NewRow
+    
+ });
+    }
+  xhttp.open("GET", "https://jsonplaceholder.typicode.com/posts");
+  xhttp.send();
+}
+   </script>
+
+</body>
+</html>

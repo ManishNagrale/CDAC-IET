@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yesterday Data Load with Promise</title>
+</head>
+<body>
+    <div id="demo">
+      <h2>LET AJAX CHANGE THIS TEXT</h2>
+      <button type="button" onclick="loadYesterdayData()">CHANGE CONTENT</button>
+    </div>
+
+    <script>
+        
+      function loadYesterdayData() {
+        return new Promise((resolve, reject) => {
+          fetch('test.txt')
+            .then(response => {
+              if (!response.ok) {
+                reject('Network response was not ok');
+              }
+              return response.text();
+            })
+            .then(data => resolve(data))
+            .catch(error => reject(error));
+        });
+      }
+      function loadYesterdayDataHandler() {
+        const demoDiv = document.getElementById('demo');
+        demoDiv.innerHTML = '<h2>Loading yesterday\'s data...</h2>';
+
+        loadYesterdayData()
+          .then(data => {
+            demoDiv.innerHTML = data;
+          })
+          .catch(err => {
+            demoDiv.innerHTML = `<h2>Error loading data: ${err}</h2>`;
+          });
+      }
+      document.querySelector('button').onclick = loadYesterdayDataHandler;
+    </script>
+</body>
+</html>
