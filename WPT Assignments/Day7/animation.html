@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .corner {
+      position: fixed;
+      width: 50px;
+      height: 50px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      border-radius: 8px;
+    }
+    #left { top: 0; left: 0; background: #3498db; }
+    #right { top: 0; right: 0; background: #e74c3c; }
+  </style>
+</head>
+<body>
+  <div id="left" class="corner">L</div>
+  <div id="right" class="corner">R</div>
+
+  <script>
+    
+    let angle = 0, leftAnim = setInterval(() => {
+      angle =angle+ 10;
+      document.getElementById('left').style.transform = `rotate(${angle}deg)`;
+    }, 100);
+
+
+    let scale = 1, grow = true, rightAnim = setInterval(() => {
+      scale =scale+(grow ? 0.06 : -0.06);
+      if (scale > 1.5) grow = false;
+      if (scale < 1) grow = true;
+      document.getElementById('right').style.transform = `scale(${scale})`;
+    }, 100);
+
+    setTimeout(() => {
+      clearInterval(leftAnim);
+      clearInterval(rightAnim);
+    }, 5000);
+  </script>
+</body>
+</html>
