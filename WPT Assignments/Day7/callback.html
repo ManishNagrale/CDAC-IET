@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>setInterval, clearInterval, setTimeout Example</title>
+</head>
+<body>
+  <h1"clock" id=>Time will be shown here</h1>
+  <button onclick="startClock()">Start Clock</button>
+  <button onclick="stopClock()">Stop Clock</button>
+  <button onclick="showMessage()">Show Message after 2 seconds</button>
+  
+  <script>
+    let intervalId;
+
+    function startClock() {
+
+      intervalId = setInterval(() => {
+        document.getElementById('clock').innerText = new Date().toLocaleTimeString();
+      }, 1000);
+    }
+
+    function stopClock() {
+ 
+      clearInterval(intervalId);
+    }
+
+    function showMessage() {
+  
+      setTimeout(() => {
+        alert("Hello! This is a delayed message.");
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
