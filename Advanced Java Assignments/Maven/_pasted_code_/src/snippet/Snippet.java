@@ -1,0 +1,9 @@
+package snippet;
+
+public class Snippet {
+	msg.pay=pay the bill amout
+	msg.welcome=Welcome {0} 
+	msg.billmsg=enter bill amount
+	msg.currency=Rs.
+}
+
